@@ -12,6 +12,7 @@
             </h2>
         </div>
         <form action="" method="post">
+            {% csrf_token %}
             <button type="submit">Yes, Delete</button>
             <a href="{% url 'home'%}">Cancel</a>
         </form>

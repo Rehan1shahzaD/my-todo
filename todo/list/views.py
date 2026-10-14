@@ -36,3 +36,5 @@ def delete(request, id):
     if request.method == 'POST':
         task.delete()
         return redirect('home')
+
+    return render(request, 'delete_confirmation.html',{'task':task})

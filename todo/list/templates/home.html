@@ -1,32 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel ="stylesheet" href="{% static 'styles.css'%}">
         <title>Todo-Home</title>
     </head>
     <body>
-        <h1>My Tasks</h1>
+        <header>
+            <h1 class="title">📔My TODO List</h1>
+        </header>
 
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Add Task</button>
-        </form>
+       <section class="add-section">
+           <form action="" method="post">
+              {% csrf_token %}
+              {{form.as_p}}
+              <button type="submit" class="btn add-btn">Add Task</button>
+           </form>
+       </section>
 
-
-        <div>
-            {% for task in tasks %}
-                <h2>{{ task.title }}</h2>
-                <p>{{ task.description }}</p>
-                <div>
-                    <a href="{% url 'update' task.id %}">Edit</a>
-                    <a href="{%url 'delete' task.id%}">Delete</a>
-                </div>
-                    
-            {% empty %}
-                <h2>No tasks available</h2>
-            {% endfor %}
-        </div>
+        <main class="task-container">
+        <div class="task-card">
+            <h2 class="task-title">{{task.title}}</h2>
+        </main>
     </body>
 </html>
