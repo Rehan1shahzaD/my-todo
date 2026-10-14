@@ -21,7 +21,7 @@
                 <p>{{ task.description }}</p>
                 <div>
                     <a href="{% url 'update' task.id %}">Edit</a>
-                    <a href="">Delete</a>
+                    <a href="{%url 'delete' task.id%}">Delete</a>
                 </div>
                     
             {% empty %}
