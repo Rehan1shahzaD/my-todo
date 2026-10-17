@@ -1,15 +1,23 @@
+{% load static %}
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylessheet" href="{% static 'styles.css'%}">
         <title>Todo-Update</title>
     </head>
     <body>
-        <h1>update Task</h1>
-        <form action="" method="post">
-             {% csrf_token %}
-             {{ form.as_p}}
-             <button type="submit">update</button>
-        </form>
+         <header class="header">
+            <h1 class="title">📔Update Task</h1>
+        </header>
+        <main class="update-section">
+            <button class= "btn back-btn" onclick="history.back()">🔙 Back</button>
+            <form action="" method="post" class="update-form">
+                {% csrf_token %}
+                {{ form.as_p}}
+                <button type="submit" class="btn update-btn">Save Changes</button>
+
+            </form>
+        </main>   
     </body>
 </html>
