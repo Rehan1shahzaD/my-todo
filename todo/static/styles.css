@@ -186,3 +186,220 @@ body::before {
     transition: all 0.3s ease;
     animation: floatCard 6s ease-in-out infinite alternate;
 }
+
+.task-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135beg, rgba(56, 189, 248, 0.8), rgba(37, 99, 235, 0.6));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradinet(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+    pointer-events: none;
+}
+
+.task-card:hover {
+    transform: translatey(-4px);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+}
+
+.task-title {
+    font-size: 1.2rem;
+    color: #e2e8f0;
+}
+
+.task-buttons {
+    display: flex;
+    gap: 0.5rem;
+
+}
+
+/* FLOAT ANIMATION */
+@keyframes floatcard {
+    0% {
+        transform: translatey(0px);
+    }
+
+    100% {
+        transform: translateY(-4px);
+    }
+}
+
+/* EMPTY STATE */
+.no-task {
+    color: #94a394;
+    text-align: center;
+    font-weight: 400;
+    margin-top: 2rem;
+}
+
+/* SCROLLBAR +RESPONSIVE */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+@media (max-width:600px) {
+    .task-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+}
+
+/* UPDATE PAGE STYLING */
+.update-section {
+    position: relative;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(15px);
+    border-radius: 1rem;
+    box-shadow: 1rem;
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    margin-top: 2rem;
+    z-index: 1;
+
+}
+
+.update-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.8), rgba(37, 99, 235, 0.6));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+    pointer-events: none;
+
+}
+
+.update-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 1;
+}
+
+.update-form input[type="text"],
+.update-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.2s;
+}
+
+.update-form input:focus,
+.update-form textarea:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+/* button */
+.update-btn {
+    border: 1px solid #38bdf8;
+    color: #38bdf8;
+    background: transparent;
+
+}
+
+.update-btn:hover::before {
+    background: linear-gradient(90deg, #38bdf8, #0ea5e9, #3b82f6);
+}
+
+.back-btn {
+    border: 1px solid #94a3b8;
+    color: #94a3b8;
+    background: transparent;
+    margin-bottom: 1rem;
+
+}
+
+.back-btn:hover {
+    color: #0f172a;
+}
+
+.back-btn:hover::before {
+    background: linear-gradient(90deg, #64748b, #94a3b8);
+
+}
+
+/* DELETE PAGE STYLING */
+.delete-section {
+    position: relative;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 1rem;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    margin-top: 2rem;
+    text-align: center;
+    z-index: 1;
+}
+
+.delete-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.8), rgba(220, 38, 38, 0.6));
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+    pointer-events: none;
+}
+
+.delete-message {
+    color: #f1f5f9;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+
+}
+
+.delete-task {
+    color: #ef4444;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+
+}
+
+.delete-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+}
+
+.confirm-delete {
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    background: transparent;
+
+}
+
+.cancle-delete:hover::before {
+    background: linear-gradiet(90deg, #ef4444, #dc2626);
+}
+
+.cancel-delete {
+    border: 1px solid #94a3b8;
+    color: #94a3b8;
+    background: transparent;
+}
+
+.cancle-delete:hover::before {
+    background: linear-gradient(90deg, #64748b, #94a3b8);
+}
