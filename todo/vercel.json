@@ -1,19 +1,22 @@
 {
-    "version": 2,
     "builds": [
         {
             "src": "todo/wsgi.py",
             "use": "@vercel/python",
             "config": {
                 "maxLambdaSize": "15mb",
-                "runtime": "python3.9"
+                "runtime": "python3.13"
             }
         }
     ],
     "routes": [
         {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
             "src": "/(.*)",
-            "destination": "todo/wsgi.py"
+            "dest": "todo/wsgi.py"
         }
     ]
 }
