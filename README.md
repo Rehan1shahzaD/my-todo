@@ -47,7 +47,11 @@ Then visit <http://127.0.0.1:8000/admin/>.
 2. Set the Vercel project **Root Directory** to `todo`.
 3. Deploy using the included `vercel.json` configuration.
 
-The project accepts a `DATABASE_URL` environment variable. For hosted use, configure it with a managed PostgreSQL database; SQLite files on serverless deployments should not be treated as persistent storage.
+The project accepts a `DATABASE_URL` environment variable and applies pending
+migrations when the WSGI application starts. For hosted use, configure
+`DATABASE_URL` with a managed PostgreSQL database; SQLite files on serverless
+deployments should not be treated as persistent storage. Without a persistent
+database, tasks can disappear between requests or after a restart.
 
 Before using this app publicly, configure a private `SECRET_KEY` and turn `DEBUG` off in Django settings.
 
