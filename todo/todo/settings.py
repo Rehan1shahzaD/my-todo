@@ -78,10 +78,23 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 import dj_database_url
 import os
 
+# SQLite is fine for local development, but many hosted/serverless environments
+# mount the app directory as read-only. When that happens, the default project
+# database path fails with "attempt to write a readonly database".
+# Use a writable temp database on those platforms while leaving local dev on the
+# project folder.
+def get_default_db_url():
+    if os.environ.get("DATABASE_URL"):
+        return os.environ["DATABASE_URL"]
+
+    if os.environ.get("VERCEL") or os.environ.get("PYTHONSERVERLESS"):
+        return "sqlite:////tmp/db.sqlite3"
+
+    return f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+
+
 DATABASES = {
-    "default": dj_database_url.parse(
-        os.environ.get("DATABASE_URL") or "sqlite:///db.sqlite3"
-    )
+    "default": dj_database_url.parse(get_default_db_url())
 }
 
 
